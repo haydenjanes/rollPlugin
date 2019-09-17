@@ -27,20 +27,20 @@ public class RollPlugin extends JavaPlugin {
             if (args.length == 1) {
                 try {
                     number = Integer.parseInt(args[0]);
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException e) { /* Catches improper use of the command, restricting it to numbers only */
                     sender.sendMessage(ChatColor.RED + "Invalid! Roll a proper number.");
                     return true;
                 }
                 if (number >= 1) {
                     int rollDie = rollDie(number);
-                    if (sender instanceof Player) {
+                    if (sender instanceof Player) { /* Verifying sender is a Player so console doesn't try to send to others */
                         Player player = (Player) sender;
-                        for (Entity entity : player.getNearbyEntities(10, 10, 10)) {
+                        for (Entity entity : player.getNearbyEntities(10, 10, 10)) { /* Checks nearby entities within 10 blocks on X, Y, and Z axis */
                             if (entity instanceof Player) {
                                 Player players = (Player) entity;
                                 players.sendMessage(ChatColor.GOLD + player.getDisplayName() + " rolled " + ChatColor.GREEN + rollDie + ChatColor.YELLOW + " (out of " + number + ")");
                             }
-                        } // End of 'FOR LOOP'
+                        }
                     }
                     sender.sendMessage(ChatColor.GOLD + "You rolled " + ChatColor.GREEN + rollDie + ChatColor.YELLOW + " (out of " + number + ")");
                     return true;
