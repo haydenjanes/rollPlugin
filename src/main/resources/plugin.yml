@@ -1,0 +1,8 @@
+name: RollPlugin
+version: 1.0
+main: com.gmail.haydencjanes.rollPlugin.RollPlugin
+api-version: 1.14
+commands:
+  roll:
+    description: Rolls a custom number
+    usage: /<command> <number>
